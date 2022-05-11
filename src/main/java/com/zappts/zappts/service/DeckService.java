@@ -15,6 +15,7 @@ import java.util.List;
 public class DeckService {
 
     private final DeckRepository deckRepository;
+
     private final DeckMapper deckMapper;
 
     public List<DeckDTO> procurarTodos(){
@@ -52,4 +53,29 @@ public class DeckService {
         return "Jogador deletada com sucesso!";
 
     }
+
+    public List<DeckJogadorDTO> buscaDeckPorIdJogador(Integer idJogador){
+        
+        List<DeckJogadorDTO> deckJogador = deckRepository.buscaDeckPorIdJogador(idJogador);
+
+        deckJogador.stream().map(
+            deck -> {
+                deck.setCartasDTO(deckRepository.buscaCartasDeckJogador(idJogador, deck.getIdDeck()));
+            }
+        );
+
+        return deckJogador;
+    }
+
+    public DeckJogadorDTO buscaDeck(Integer idJogador, Integer idDeck){
+        DeckJogadorDTO deckJogador = deckRepository.buscaDeck(idJogador, idDeck);
+
+        deckJogador.setCartasDTO(deckRepository.buscaCartasDeckJogador(idJogador, idDeck));
+
+        return deckJogador;
+
+    }
+
+
+
 }

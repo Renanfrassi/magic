@@ -12,6 +12,8 @@ public class DeckDTO implements Serializable {
 
     private Integer id;
 
+    private String nome;
+
     private Integer idCarta;
     
     private String nomeCarta;

@@ -11,6 +11,10 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="nome" type="VARCHAR(31)" >
+                <constraints nullable="false"/>
+            </column>
+
             <column name="id_carta" type="NUMBER" >
                 <constraints nullable="false"/>
             </column>

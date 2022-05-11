@@ -15,6 +15,7 @@ import java.util.List;
 public class JogadorService {
 
     private final JogadorRepository jogadorRepository;
+
     private final JogadorMapper jogadorMapper;
 
     public List<JogadorDTO> procurarTodos(){

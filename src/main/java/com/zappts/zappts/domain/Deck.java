@@ -21,4 +21,6 @@ public class Deck implements Serializable {
 
     private DeckKey idKey;
 
+    private String nome;
+
 }
