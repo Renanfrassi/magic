@@ -22,17 +22,17 @@ public class Carta implements Serializable {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "edição")
-    private String edição;
+    @Column(name = "edicao")
+    private String edicao;
 
-    @Column(name = "ativo")
+    @Column(name = "laminada")
     @Value("false")
     private Boolean laminada;
 
 	@Column(name = "preco")
 	private Double preco;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_idioma")
     private Idioma idioma;
 

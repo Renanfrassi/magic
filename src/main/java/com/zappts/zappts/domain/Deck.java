@@ -14,7 +14,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Deck implements Serializable {
 
-    @EmbeddedId
-    private DeckKey id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_DECK")
+    @SequenceGenerator(name = "SQ_DECK", sequenceName = "serial_deck", initialValue = 1, allocationSize = 1)
+    private Integer id;
+
+    private DeckKey idKey;
 
 }

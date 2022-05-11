@@ -15,11 +15,13 @@ public class CartaDTO implements Serializable {
 
     private String nome;
 
-    private String edição;
+    private String edicao;
 
     private Boolean laminada;
 
 	private Double preco;
 
     private String nomeIdioma;
+
+    private Integer idIdioma;
 }

@@ -14,11 +14,6 @@ import lombok.Setter;
 @Embeddable
 public class DeckKey implements Serializable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_DECK")
-    @SequenceGenerator(name = "SQ_DECK", sequenceName = "serial_deck", initialValue = 1, allocationSize = 1)
-    private Integer id;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_carta")
     private Carta idCarta;

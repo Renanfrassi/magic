@@ -11,34 +11,30 @@ import java.util.List;
 public interface DeckMapper extends GenericoMapper<DeckDTO, Deck>{
     
     @Override
-    @Mapping(source = "nomeCarta", target = "id.idCarta.nome")
-    @Mapping(source = "nomeJogador", target = "id.idJogador.nome")
-    @Mapping(source = "idCarta", target = "id.idCarta.id")
-    @Mapping(source = "idJogador", target = "id.idJogador.id")
-    @Mapping(source = "id", target = "id.id")
+    @Mapping(source = "nomeCarta", target = "idKey.idCarta.nome")
+    @Mapping(source = "nomeJogador", target = "idKey.idJogador.nome")
+    @Mapping(source = "idCarta", target = "idKey.idCarta.id")
+    @Mapping(source = "idJogador", target = "idKey.idJogador.id")
     Deck paraEntidade(DeckDTO dto);
     
     @Override
-    @Mapping(source = "nomeCarta", target = "id.idCarta.nome")
-    @Mapping(source = "nomeJogador", target = "id.idJogador.nome")
-    @Mapping(source = "idCarta", target = "id.idCarta.id")
-    @Mapping(source = "idJogador", target = "id.idJogador.id")
-    @Mapping(source = "id", target = "id.id")
+    @Mapping(source = "nomeCarta", target = "idKey.idCarta.nome")
+    @Mapping(source = "nomeJogador", target = "idKey.idJogador.nome")
+    @Mapping(source = "idCarta", target = "idKey.idCarta.id")
+    @Mapping(source = "idJogador", target = "idKey.idJogador.id")
     List<Deck> paraEntidade(List<DeckDTO> listaDto);
     
     @Override
-    @Mapping(source = "id.idCarta.nome", target = "nomeCarta")
-    @Mapping(source = "id.idJogador.nome", target = "nomeJogador")
-    @Mapping(source = "id.idCarta.id", target = "idCarta")
-    @Mapping(source = "id.idJogador.id", target = "idJogador")
-    @Mapping(source = "id.id", target = "id")
+    @Mapping(source = "idKey.idCarta.nome", target = "nomeCarta")
+    @Mapping(source = "idKey.idJogador.nome", target = "nomeJogador")
+    @Mapping(source = "idKey.idCarta.id", target = "idCarta")
+    @Mapping(source = "idKey.idJogador.id", target = "idJogador")
     DeckDTO paraDto(Deck entidade);
     
     @Override
-    @Mapping(source = "id.idCarta.nome", target = "nomeCarta")
-    @Mapping(source = "id.idJogador.nome", target = "nomeJogador")
-    @Mapping(source = "id.idCarta.id", target = "idCarta")
-    @Mapping(source = "id.idJogador.id", target = "idJogador")
-    @Mapping(source = "id.id", target = "id")
+    @Mapping(source = "idKey.idCarta.nome", target = "nomeCarta")
+    @Mapping(source = "idKey.idJogador.nome", target = "nomeJogador")
+    @Mapping(source = "idKey.idCarta.id", target = "idCarta")
+    @Mapping(source = "idKey.idJogador.id", target = "idJogador")
     List<DeckDTO> paraDto(List<Deck> listaEntidade);
 }
