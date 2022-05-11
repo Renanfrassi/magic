@@ -5,7 +5,6 @@ import com.zappts.zappts.service.dto.CartaDTO;
 import com.zappts.zappts.service.mapper.CartaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
 
 import java.util.List;
 

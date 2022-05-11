@@ -23,11 +23,7 @@ public class Carta implements Serializable {
     private String nome;
 
     @Column(name = "edição")
-    private Integer edição;
-
-
-    @Column(name = "descricao")
-    private String descricao;
+    private String edição;
 
     @Column(name = "ativo")
     @Value("false")
@@ -35,5 +31,9 @@ public class Carta implements Serializable {
 
 	@Column(name = "preco")
 	private Double preco;
+
+    @OneToMany
+    @JoinColumn(name = "id_idioma")
+    private Idioma idioma;
 
 }

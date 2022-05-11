@@ -7,16 +7,16 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "jogador")
+@Table(name = "idioma")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Jogador implements Serializable {
+public class Idioma implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_JOGADOR")
-    @SequenceGenerator(name = "SQ_JOGADOR", sequenceName = "serial_jogador", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_IDIOMA")
+    @SequenceGenerator(name = "SQ_IDIOMA", sequenceName = "serial_idioma", initialValue = 1, allocationSize = 1)
     private Integer id;
 
     @Column(name = "nome")

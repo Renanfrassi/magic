@@ -10,15 +10,16 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class CartaDTO implements Serializable {
+
     private Integer id;
 
     private String nome;
 
-    private Integer edição;
-
-    private String descricao;
+    private String edição;
 
     private Boolean laminada;
 
-    private Double preco;
+	private Double preco;
+
+    private String nomeIdioma;
 }

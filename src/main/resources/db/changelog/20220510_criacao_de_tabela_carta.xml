@@ -1,0 +1,46 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20220510" author="Renan.Frassi">
+
+        <createTable tableName="carta">
+
+            <column name="id" type="NUMBER" >
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="nome" type="VARCHAR(31)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="edicao" type="VARCHAR(31)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="laminada" type="BOOLEAN">
+            </column>
+
+            <column name="preco" type="NUMBER">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="id_idioma" type="NUMBER">
+                <constraints nullable="false" />
+            </column>
+
+        </createTable>
+
+        <createSequence sequenceName="serial_carta" startValue="1"/>
+
+        <addForeignKeyConstraint baseTableName="carta"
+                            baseColumnNames="id_idioma"
+                            constraintName="fk_carta_idioma" referencedTableName="idioma"
+                            referencedColumnNames="id"/>
+
+        <addPrimaryKey tableName="carta" columnNames="id" constraintName="pk_carta"/>
+
+    </changeSet>
+
+</databaseChangeLog>
