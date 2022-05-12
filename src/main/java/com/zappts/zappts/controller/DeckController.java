@@ -2,6 +2,7 @@ package com.zappts.zappts.controller;
 
 import com.zappts.zappts.service.DeckService;
 import com.zappts.zappts.service.dto.DeckDTO;
+import com.zappts.zappts.service.dto.DeckJogadorDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,10 +45,20 @@ public class DeckController {
         return ResponseEntity.ok().body(deckService.alterar(deck));
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable int id){
-        deckService.deletar(id);
+    @DeleteMapping(value = "/{nomeDeck}/{idCarta}/{idJogador}")
+    public ResponseEntity<Void> deletarCartaDoDeck(@PathVariable String nomeDeck, @PathVariable Integer idCarta, @PathVariable Integer idJogador){
+        deckService.deletarCartaDoDeck(nomeDeck, idCarta, idJogador);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "jogador-cartas/{id}/{nomeDeck}")
+    public ResponseEntity<DeckJogadorDTO> buscaDeck(@PathVariable Integer id, @PathVariable String nomeDeck){
+        return ResponseEntity.ok().body(deckService.buscaDeck(id, nomeDeck));
+    }
+
+    @GetMapping(value = "jogador/{id}")
+    public ResponseEntity<List<DeckJogadorDTO>> buscaDeckPorIdJogador(@PathVariable Integer id){
+        return ResponseEntity.ok().body(deckService.buscaDeckPorIdJogador(id));
     }
 
 }

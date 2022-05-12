@@ -1,15 +1,16 @@
 package com.zappts.zappts.service;
 
 import com.zappts.zappts.repository.DeckRepository;
-import com.zappts.zappts.repository.JogadorRepository;
 import com.zappts.zappts.service.dto.DeckDTO;
-import com.zappts.zappts.service.dto.JogadorDTO;
+import com.zappts.zappts.service.dto.DeckJogadorDTO;
 import com.zappts.zappts.service.mapper.DeckMapper;
-import com.zappts.zappts.service.mapper.JogadorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.transaction.Transactional;
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DeckService {
@@ -18,19 +19,19 @@ public class DeckService {
 
     private final DeckMapper deckMapper;
 
-    public List<DeckDTO> procurarTodos(){
+    public List<DeckDTO> procurarTodos() {
 
         return deckMapper.paraDto(deckRepository.findAll());
 
     }
 
-    public DeckDTO buscarPorId(int id){
+    public DeckDTO buscarPorId(int id) {
 
         return deckMapper.paraDto(deckRepository.findById(id).get());
 
     }
 
-    public DeckDTO salvar(DeckDTO deck){
+    public DeckDTO salvar(DeckDTO deck) {
 
         deckRepository.save(deckMapper.paraEntidade(deck));
 
@@ -38,7 +39,7 @@ public class DeckService {
 
     }
 
-    public DeckDTO alterar(DeckDTO deck){
+    public DeckDTO alterar(DeckDTO deck) {
 
         deckRepository.save(deckMapper.paraEntidade(deck));
 
@@ -46,36 +47,34 @@ public class DeckService {
 
     }
 
-    public String deletar(int id){
+    @Transactional
+    public void deletarCartaDoDeck(String nomeDeck, Integer idCarta, Integer idJogador) {
 
-        deckRepository.deleteById(id);
-
-        return "Jogador deletada com sucesso!";
+        deckRepository.deletarCartaDoDeck(nomeDeck, idCarta, idJogador);
 
     }
 
-    public List<DeckJogadorDTO> buscaDeckPorIdJogador(Integer idJogador){
-        
+    public List<DeckJogadorDTO> buscaDeckPorIdJogador(Integer idJogador) {
+
         List<DeckJogadorDTO> deckJogador = deckRepository.buscaDeckPorIdJogador(idJogador);
 
-        deckJogador.stream().map(
-            deck -> {
-                deck.setCartasDTO(deckRepository.buscaCartasDeckJogador(idJogador, deck.getIdDeck()));
-            }
+        deckJogador.stream().forEach(
+                deck -> {
+                    deck.setCartas(deckRepository.buscaCartasDeckJogador(idJogador, deck.getNomeDeck()));
+                }
         );
 
         return deckJogador;
     }
 
-    public DeckJogadorDTO buscaDeck(Integer idJogador, Integer idDeck){
-        DeckJogadorDTO deckJogador = deckRepository.buscaDeck(idJogador, idDeck);
+    public DeckJogadorDTO buscaDeck(Integer idJogador, String nomeDeck) {
+        DeckJogadorDTO deckJogador = deckRepository.buscaDeck(idJogador, nomeDeck);
 
-        deckJogador.setCartasDTO(deckRepository.buscaCartasDeckJogador(idJogador, idDeck));
+        deckJogador.setCartas(deckRepository.buscaCartasDeckJogador(idJogador, nomeDeck));
 
         return deckJogador;
 
     }
-
 
 
 }

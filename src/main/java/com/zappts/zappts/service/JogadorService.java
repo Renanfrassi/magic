@@ -46,11 +46,9 @@ public class JogadorService {
 
     }
 
-    public String deletar(int id){
+    public void deletar(Integer id){
         
         jogadorRepository.deleteById(id);
-
-        return "Jogador deletada com sucesso!";
 
     }
 

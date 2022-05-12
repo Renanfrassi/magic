@@ -10,8 +10,6 @@ import java.io.Serializable;
 @Setter
 public class DeckDTO implements Serializable {
 
-    private Integer id;
-
     private String nome;
 
     private Integer idCarta;

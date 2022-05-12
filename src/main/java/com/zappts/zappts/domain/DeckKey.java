@@ -14,13 +14,15 @@ import lombok.Setter;
 @Embeddable
 public class DeckKey implements Serializable{
 
+    private String nome;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_carta")
-    private Carta idCarta;
+    private Carta carta;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_jogador")
-    private Jogador idJogador;
+    private Jogador jogador;
     
 
 }

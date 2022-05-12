@@ -40,7 +40,7 @@ public class JogadorController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable int id){
+    public ResponseEntity<Void> deletar(@PathVariable Integer id){
         jogadorService.deletar(id);
         return ResponseEntity.noContent().build();
     }

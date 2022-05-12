@@ -4,24 +4,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 public class DeckJogadorDTO implements Serializable {
-    
-    private Integer idDeck;
-
     private String nomeDeck;
 
     private Integer idJogador;
 
     private String nomeJogador;
 
-    private List<CartaDeckDTO> cartasDTO = new ArrayList<>();
+    private List<CartaDeckDTO> cartas = new ArrayList<>();
 
-    public DeckJogadorDTO(Integer idDeck, String nomeDeck, Integer idJogador, String nomeJogador){
-        
-        this.idDeck = idDeck;
+    public DeckJogadorDTO(String nomeDeck, Integer idJogador, String nomeJogador){
 
         this.nomeDeck = nomeDeck;
     

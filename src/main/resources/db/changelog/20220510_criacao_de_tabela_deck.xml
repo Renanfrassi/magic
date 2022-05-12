@@ -7,10 +7,6 @@
 
         <createTable tableName="deck">
 
-            <column name="id" type="NUMBER" >
-                <constraints nullable="false"/>
-            </column>
-
             <column name="nome" type="VARCHAR(31)" >
                 <constraints nullable="false"/>
             </column>
@@ -25,8 +21,6 @@
 
         </createTable>
 
-        <createSequence sequenceName="serial_deck" startValue="1"/>
-
         <addForeignKeyConstraint baseTableName="deck"
                                  baseColumnNames="id_carta"
                                  constraintName="fk_deck_carta" referencedTableName="carta"
@@ -36,10 +30,6 @@
                                  baseColumnNames="id_jogador"
                                  constraintName="fk_deck_jogador" referencedTableName="jogador"
                                  referencedColumnNames="id"/>
-
-         <addPrimaryKey tableName="deck" columnNames="id" constraintName="pk_deck"/>
-
-
 
     </changeSet>
 

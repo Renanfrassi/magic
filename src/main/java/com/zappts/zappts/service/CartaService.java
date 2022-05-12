@@ -43,11 +43,9 @@ public class CartaService {
 
     }
 
-    public String deletar(Integer id){
+    public void deletar(Integer id){
         
         cartaRepository.deleteById(id);
-
-        return "Carta deletada com sucesso!";
 
     }
 
